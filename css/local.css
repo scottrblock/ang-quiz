@@ -1,0 +1,46 @@
+/*
+  colors:
+    #eee
+    #ccc
+    #D93E38 red
+    #D1F2A5 green
+    
+
+
+*/
+
+a:active{
+  position: relative;
+  top: 1px;
+}
+
+.questions li{
+  background: #eee;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.questions li a{
+  color: #333;
+  border-bottom: 1px dashed #aaa;
+}
+
+.questions li a:hover{
+  text-decoration: none;
+  border-bottom: 1px solid #aaa;
+}
+
+
+.questions li ul li{
+  padding: 0;
+  margin: 5px;
+  background: transparent;
+}
+
+.questions .correct-false-tried-true{
+  background: #D93E38;
+}
+
+.questions .correct-true-tried-true{
+  background: #D1F2A5;
+}
