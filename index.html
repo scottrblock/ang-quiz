@@ -7,27 +7,50 @@
 </head>
 <body>
   <div ng-controller="QuestionCtrl" class="row">
+    
     <div class="span3">
-      <h3>Total Questions: {{questions.length}}</h3>
-      <h4>Correct Responses: {{getCorrectAnswers()}}
+      <h1>#DCTech Or DC Rap?</h1>
+      <p>
+        Decide who said the quotes to the left and see if you can distinguish!
+      </p>
     </div>
+    
     <div class="span3">
+      
       <ul class="unstyled questions">
         <li ng-repeat="question in questions" class="correct-{{question.correct}}-tried-{{question.tried}}">
           <div>Who said {{question.text}}</div>
+          
           <ul class='square'>
             <li ng-repeat="a in question.possible_authors">
               <a href="#" ng-click="checkAnswer()">{{a}}</a>
             </li>
           </ul>
+        
         </li>
       </ul>
+    
     </div>
+    
+    <div id="result-modal" class="modal fade"> 
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h3>Results:</h3>
+      </div>
+      <div class="modal-body">
+          <h4>You ended up getting {{getCorrectAnswers()}} out of {{questions.length}} correct. That's {{getPercent(getCorrectAnswers(), questions.length)}}%!</h4>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+  
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   
   <script src="js/question.js"></script>
 </body>

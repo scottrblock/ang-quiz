@@ -12,7 +12,6 @@ function QuestionCtrl($scope){
     $scope.getCorrectAnswers = function(){
       var count = 0;
       $.each($scope.questions, function(){
-        
         if(this.correct == true){
           count++;
         }
@@ -28,5 +27,33 @@ function QuestionCtrl($scope){
         this.question.tried = true;
       }
       this.question.tried = true;
+      
+      $scope.checkIfDone();
+      
     };
+    
+    $scope.checkIfDone = function(){
+      var done = true;
+      $.each($scope.questions, function(){
+        if(this.tried == false){
+          done = false;
+        }
+      });
+      
+      if(done){
+        $('#result-modal').modal('show');
+      }
+    
+    };
+    
+    $scope.getPercent = function(a, b){
+      return (a/b).toFixed(2) * 100;
+    }
 }
+
+
+
+
+
+
+

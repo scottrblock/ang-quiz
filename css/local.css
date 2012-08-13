@@ -18,6 +18,7 @@ a:active{
   background: #eee;
   padding: 20px;
   margin: 20px 0;
+  border-radius: 4px;
 }
 
 .questions li a{
@@ -43,4 +44,8 @@ a:active{
 
 .questions .correct-true-tried-true{
   background: #D1F2A5;
+}
+
+#result-modal{
+  display: none;
 }
