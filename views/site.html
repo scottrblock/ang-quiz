@@ -6,31 +6,46 @@
   
 </head>
 <body>
-  <div ng-controller="QuestionCtrl" class="container row">
+  <div ng-controller="QuestionCtrl" class="container">
     
-    <div class="span3">
-      <h1>#DCTech Or DC Rap?</h1>
+    <div class="eight columns offset-by-four">
+      <h1>DC Tech or DC Rap?</h1>
       <p>
         Decide who said the quotes to the left and see if you can distinguish!
       </p>
     </div>
     
-    <div class="span3">
+    <div class="eight columns offset-by-four">
       
-      <ul class="unstyled questions">
-        <li ng-repeat="question in questions" class="correct-{{question.correct}}-tried-{{question.tried}}">
-          <div>Who said {{question.text}}</div>
+      <ul class="unstyled questions" id="questions">
+        <li ng-repeat="question in questions" class="correct-{{question.correct}}-tried-{{question.tried}}" data-question-id="{{$index}}">
+          <div>Who said 
+            <blockquote>{{question.text}}</blockquote>
+          </div>
           
-          <ul class='square'>
-            <li ng-repeat="a in question.possible_authors">
-              <a href="#" ng-click="checkAnswer()">{{a}}</a>
+          <ul class='unstyled choices'>
+            <li ng-repeat="a in types">
+              <a href="#" ng-click="checkAnswer()" class="btn btn-large">{{a.display}}</a>
             </li>
           </ul>
-        
+          <div class='extra-show-{{question.extra.length > 0}}' ng-bind-html-unsafe="question.extra">
+          </div>
         </li>
       </ul>
     
     </div>
+    
+    <ul id="extras">
+      <li>
+        DC Native Wale raps this line in the first verse of Ambition, the title track on his second commercial album
+        <iframe width="340" height="191" src="http://www.youtube.com/embed/O7ZbM7ak8uw?rel=0" frameborder="0" allowfullscreen></iframe>      
+      </li>
+      <li>
+        #DCTech pioneer Peter Corbett gives us this quote during an interview with Frank Gruber and Tech Cocktail.
+        <iframe width="340" height="191" src="http://www.youtube.com/embed/jdjdGEcT1jw?rel=0" frameborder="0" allowfullscreen></iframe>  
+      </li>
+    </ul>
+    
     
     <div id="result-modal" class="modal fade"> 
       <div class="modal-header">

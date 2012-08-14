@@ -9,6 +9,27 @@
 
 */
 
+body{
+  font-size: 18px;
+}
+
+#extras{
+  display: none;
+}
+
+blockquote {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+}
+
+iframe{
+  display: block;
+  margin: 10px auto;
+}
+
 a:active{
   position: relative;
   top: 1px;
@@ -31,6 +52,20 @@ a:active{
   border-bottom: 1px solid #aaa;
 }
 
+.questions .extra{
+  padding: 10px;
+  background: #eee;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.questions .choices a{
+  border-bottom: 1px solid #ccc;
+  display: block;
+  width: 140px;
+  margin: 0 auto 10px auto;
+}
+
 
 .questions li ul li{
   padding: 0;
@@ -44,6 +79,10 @@ a:active{
 
 .questions .correct-true-tried-true{
   background: #D1F2A5;
+}
+
+.extra-show-false{
+  display: none;
 }
 
 #result-modal{
