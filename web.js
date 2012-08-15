@@ -55,7 +55,7 @@ var Schema = mongoose.Schema
 var UserSchema = new Schema({
     id        : Number
   , score     : Number
-  , name:  : String
+  , name  : String
   , img_url: String
 });
 
