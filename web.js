@@ -77,6 +77,7 @@ app.get('/auth/twitter', function(req, res){
 
 app.get('/auth/twitter/callback', function(req, res, next){
 	if (req.session.oauth) {
+	  console.log(req);
 		req.session.oauth.verifier = req.query.oauth_verifier;
 		var oauth = req.session.oauth;
 
@@ -103,7 +104,7 @@ app.get('/auth/twitter/callback', function(req, res, next){
 });
 
 app.post("/send_score", function(req, res, next) {
- console.log(req.body);
+ console.log(req.body.score);
  oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
 		if (error) {
 			console.log(error);
@@ -115,7 +116,7 @@ app.post("/send_score", function(req, res, next) {
 			console.log('oauth.token: ' + req.session.oauth.token);
 			req.session.oauth.token_secret = oauth_token_secret;
 			console.log('oauth.token_secret: ' + req.session.oauth.token_secret);
-			res.redirect('https://twitter.com/oauth/authenticate?oauth_token='+oauth_token)
+			res.redirect('https://twitter.com/oauth/authenticate?oauth_token='+oauth_token+'&score='+req.body.score)
 	  }
 	});
 });
