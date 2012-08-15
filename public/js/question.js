@@ -62,7 +62,7 @@ function QuestionCtrl($scope){
              var user = T.currentUser;
              
              var id = user.data('id');
-             var score = getPercent($scope.getCorrectAnswers(), $scope.questions.length);
+             var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
              var name = user.data('screenName');
              var img_url = user.data('profileImageUrl');
              
