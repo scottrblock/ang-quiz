@@ -54,6 +54,11 @@
       </div>
       <div class="modal-body">
           <h4>You ended up getting {{getCorrectAnswers()}} out of {{questions.length}} correct. That's {{getPercent(getCorrectAnswers(), questions.length)}}%!</h4>
+          
+          <form name="sendScore" method="post" action="/send_score">
+            <input type="hidden" name="score" value="{{getPercent(getCorrectAnswers(), questions.length)}}"/>
+            <button type="submit" class="btn">Post to Leaderboard!</button>
+          </form>
       </div>
       <div class="modal-footer">
         <a href="#" class="btn" data-dismiss="modal">Close</a>

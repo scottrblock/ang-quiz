@@ -72,20 +72,7 @@ var oa = new OAuth(
 );
 
 app.get('/auth/twitter', function(req, res){
-	oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
-		if (error) {
-			console.log(error);
-			res.send("Sorry, something on the tubes broke.")
-		}
-		else {
-			req.session.oauth = {};
-			req.session.oauth.token = oauth_token;
-			console.log('oauth.token: ' + req.session.oauth.token);
-			req.session.oauth.token_secret = oauth_token_secret;
-			console.log('oauth.token_secret: ' + req.session.oauth.token_secret);
-			res.redirect('https://twitter.com/oauth/authenticate?oauth_token='+oauth_token)
-	}
-	});
+	
 });
 
 app.get('/auth/twitter/callback', function(req, res, next){
@@ -115,14 +102,23 @@ app.get('/auth/twitter/callback', function(req, res, next){
 		next(new Error("you're not supposed to be here."))
 });
 
-
-
-
-
-
-
-
-
+app.post("/send_score", function(req, res, next) {
+ console.log(req.body);
+ oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
+		if (error) {
+			console.log(error);
+			res.send("Sorry, something on the tubes broke.")
+		}
+		else {
+			req.session.oauth = {};
+			req.session.oauth.token = oauth_token;
+			console.log('oauth.token: ' + req.session.oauth.token);
+			req.session.oauth.token_secret = oauth_token_secret;
+			console.log('oauth.token_secret: ' + req.session.oauth.token_secret);
+			res.redirect('https://twitter.com/oauth/authenticate?oauth_token='+oauth_token)
+	  }
+	});
+});
 
 
 
