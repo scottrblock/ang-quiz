@@ -55,10 +55,8 @@
       <div class="modal-body">
           <h4>You ended up getting {{getCorrectAnswers()}} out of {{questions.length}} correct. That's {{getPercent(getCorrectAnswers(), questions.length)}}%!</h4>
           
-          <form name="sendScore" method="post" action="/send_score">
-            <input type="hidden" name="score" value="{{getPercent(getCorrectAnswers(), questions.length)}}"/>
-            <button type="submit" class="btn">Post to Leaderboard!</button>
-          </form>
+          <span id="login"></span>
+          
       </div>
       <div class="modal-footer">
         <a href="#" class="btn" data-dismiss="modal">Close</a>
@@ -71,6 +69,7 @@
   <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
   <script src="http://underscorejs.org/underscore-min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="http://platform.twitter.com/anywhere.js?id=dfrfRrhx2uIYXvwPGH3sPg&v=1" type="text/javascript"></script>
   
   <script src="/js/question.js"></script>
 </body>

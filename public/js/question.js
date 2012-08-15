@@ -57,7 +57,16 @@ function QuestionCtrl($scope){
       
       if(done){
         $('#result-modal').modal('show');
-        
+        twttr.anywhere(function (T) {
+           T("#login").connectButton({
+             authComplete: function(user) {
+               console.log(user);
+             },
+             signOut: function() {
+               // triggered when user logs out
+             }
+           });
+         });
         
       }
     
