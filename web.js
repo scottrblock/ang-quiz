@@ -36,9 +36,6 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 
-// redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
-
 // Start server
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
@@ -46,7 +43,7 @@ app.listen(process.env.PORT || 3000, function(){
 
 //mongo
 var db_url = process.env.MONGOHQ_URL || 'mongodb://localhost/test'
-mongoose.connect(db_url);
+mongoose.connect(db_urlau);
 
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
@@ -109,6 +106,8 @@ app.get('/auth/twitter/callback', function(req, res, next){
 		next(new Error("you're not supposed to be here."))
 });
 
+// redirect all others to the index (HTML5 history)
+app.get('*', routes.index);
 
 
 
