@@ -84,10 +84,7 @@ app.get('/auth/twitter', passport.authenticate('twitter'));
 // authentication has failed.
 app.get('/auth/twitter/callback', 
   passport.authenticate('twitter', { successRedirect: '/',
-                                     failureRedirect: '/' }),
-  
-                                     
-);
+                                     failureRedirect: '/' }));
 
 
 
