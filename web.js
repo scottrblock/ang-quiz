@@ -58,7 +58,7 @@ var UserSchema = new Schema({
 });
 
 mongoose.model('User', UserSchema); 
-var User = mongoose.model('User');
+User = mongoose.model('User');
 
 //Twitter Oauth
 var oa = new OAuth(
@@ -75,7 +75,7 @@ app.get('/auth/twitter', function(req, res){
 	oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
 		if (error) {
 			console.log(error);
-			res.send("yeah no. didn't work.")
+			res.send("Sorry, something on the tubes broke.")
 		}
 		else {
 			req.session.oauth = {};
@@ -97,12 +97,16 @@ app.get('/auth/twitter/callback', function(req, res, next){
 		function(error, oauth_access_token, oauth_access_token_secret, results){
 			if (error){
 				console.log(error);
-				res.send("yeah something broke.");
+				res.send("Sorry, something on the tubes broke.");
 			} else {
 				req.session.oauth.access_token = oauth_access_token;
 				req.session.oauth,access_token_secret = oauth_access_token_secret;
 				console.log(results);
-				res.send("worked. nice one.");
+        var user = new User(); 
+        user.id = results.user_id;
+        user.save(function(err, users){
+          console.log(users);
+        });
 			}
 		}
 		);
