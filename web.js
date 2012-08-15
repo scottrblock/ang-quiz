@@ -6,9 +6,46 @@
 var express = require('express'),
     routes = require('./routes'),
     mongoose = require('mongoose'),
-    passport = require('passport'),
-    TwitterStrategy = require('passport-twitter').Strategy;
+    mongooseAuth = require('mongoose-auth'),
+    everyauth = require('everyauth'),
+    Promise = everyauth.Promise;
 
+//mongo
+var db_url = process.env.MONGOHQ_URL || 'mongodb://localhost/test'
+mongoose.connect(db_url);
+
+var Schema = mongoose.Schema
+  , ObjectId = Schema.ObjectId;
+
+var UserSchema = new Schema({
+    id        : String
+  , score     : Number
+});
+
+UserSchema.plugin(mongooseAuth, {
+  everymodule: {
+    everyauth: {
+      User: function() {
+        return User;
+      }
+    }
+  },
+
+  twitter: {
+    everyauth: {
+      myHostname: 'http://dctechdcrap.herokuapp.com/',
+      consumerKey: 'dfrfRrhx2uIYXvwPGH3sPg',
+      consumerSecret: 'zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70',
+      redirectPath: '/'
+    }
+  }
+});
+
+
+mongoose.model('User', UserSchema); 
+User = mongoose.model('User');
+
+    
 var app = module.exports = express.createServer();
 
 // Configuration
@@ -23,8 +60,7 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
   app.use(express.cookieParser()); 
   app.use(express.session({secret: 'dctech'}));
-  app.use(passport.initialize());
-  app.use(passport.session());
+  app.use(mongooseAuth.middleware());
   app.use(app.router);
 });
 
@@ -46,66 +82,18 @@ app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
 
-//mongo
-var db_url = process.env.MONGOHQ_URL || 'mongodb://localhost/test'
-mongoose.connect(db_url);
-
-var Schema = mongoose.Schema
-  , ObjectId = Schema.ObjectId;
-  
-var UserSchema = new Schema({
-    id        : String
-  , score     : Number
-});
-
-mongoose.model('User', UserSchema); 
-var User = mongoose.model('User');
-
 //Twitter Oauth
-passport.use(new TwitterStrategy({
-    consumerKey: "dfrfRrhx2uIYXvwPGH3sPg",
-    consumerSecret: "zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70",
-    callbackURL: "http://dctechdcrap.herokuapp.com/auth/twitter/callback"
-  },
-  function(token, tokenSecret, profile, done) {
-    //create user here
-      process.nextTick(function () {
-
-            // To keep the example simple, the user's Twitter profile is returned to
-            // represent the logged-in user.  In a typical application, you would want
-            // to associate the Twitter account with a user record in your database,
-            // and return that user instead.
-            return done(null, profile);
-      });
-  }
-));
-
-// Redirect the user to Twitter for authentication.  When complete, Twitter
-// will redirect the user back to the application at
-// /auth/twitter/callback
-app.get('/auth/twitter', passport.authenticate('twitter'), function(req, res){
-  
+app.get('/leaderboard/', function(req, res){
+  res.render('leaderboard')
 });
 
-// Twitter will redirect the user to this URL after approval.  Finish the
-// authentication process by attempting to obtain an access token.  If
-// access was granted, the user will be logged in.  Otherwise,
-// authentication has failed.
-app.get('/auth/twitter/callback', 
-  passport.authenticate('twitter', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-});
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
 
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/')
-}
+
 
 
 
