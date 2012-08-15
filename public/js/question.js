@@ -37,7 +37,7 @@ function QuestionCtrl($scope){
       }
       this.question.tried = true;
       
-      $scope.addExtra(this.$index, question)
+      $scope.addExtra(this.$parent.$index, question)
       $scope.checkIfDone();
       
     };
