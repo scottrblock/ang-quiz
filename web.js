@@ -45,7 +45,8 @@ app.listen(process.env.PORT || 3000, function(){
 });
 
 //mongo
-mongoose.connect('mongodb://localhost/test');
+var db_url = process.env.MONGOHQ_URL || 'mongodb://localhost/test'
+mongoose.connect(db_url);
 
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
