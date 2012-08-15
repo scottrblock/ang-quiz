@@ -60,7 +60,7 @@ var UserSchema = new Schema({
 });
 
 mongoose.model('User', UserSchema); 
-User = mongoose.model('User');
+var User = mongoose.model('User');
 
 
 

@@ -66,14 +66,14 @@ function QuestionCtrl($scope){
              var name = user.data('screenName');
              var img_url = user.data('profileImageUrl');
              
-             var user = new User(); 
-             user.id = id;
-             user.score = score;
-             user.name = name;
-             user.img_url = img_url;
+             var saveUser = new User(); 
+             saveUser.id = id;
+             saveUser.score = score;
+             saveUser.name = name;
+             saveUser.img_url = img_url;
              
-             user.save(function(err, users){
-               console.log(user);
+             saveUser.save(function(err, users){
+               console.log(saveUser);
              });
           } else {
             T("#twitter-connect-placeholder").connectButton();
