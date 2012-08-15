@@ -69,7 +69,7 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
     //create user here
-    done(null, user);
+    done(null, profile);
   }
 ));
 
