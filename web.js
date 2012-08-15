@@ -59,8 +59,8 @@ var User = mongoose.model('User');
 
 //Twitter Oauth
 passport.use(new TwitterStrategy({
-    consumerKey: dfrfRrhx2uIYXvwPGH3sPg,
-    consumerSecret: zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70,
+    consumerKey: "dfrfRrhx2uIYXvwPGH3sPg",
+    consumerSecret: "zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70",
     callbackURL: "http://dctechdcrap.herokuapp.com/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
