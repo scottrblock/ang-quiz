@@ -77,7 +77,6 @@ passport.use(new TwitterStrategy({
             // and return that user instead.
             return done(null, profile);
       });
-    });
   }
 ));
 
