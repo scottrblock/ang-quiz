@@ -6,7 +6,8 @@
 var express = require('express'),
     routes = require('./routes'),
     mongoose = require('mongoose'),
-    OAuth = require('oauth').OAuth;
+    passport = require('passport'),
+    TwitterStrategy = require('passport-twitter').Strategy;
 
 var app = module.exports = express.createServer();
 
@@ -57,55 +58,33 @@ mongoose.model('User', UserSchema);
 var User = mongoose.model('User');
 
 //Twitter Oauth
-var oa = new OAuth(
-	"https://api.twitter.com/oauth/request_token",
-	"https://api.twitter.com/oauth/access_token",
-	"dfrfRrhx2uIYXvwPGH3sPg",
-	"zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70",
-	"1.0",
-	"http://dctechdcrap.herokuapp.com/auth/twitter/callback",
-	"HMAC-SHA1"
-);
+passport.use(new TwitterStrategy({
+    consumerKey: dfrfRrhx2uIYXvwPGH3sPg,
+    consumerSecret: zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70,
+    callbackURL: "http://dctechdcrap.herokuapp.com/auth/twitter/callback"
+  },
+  function(token, tokenSecret, profile, done) {
+    User.findOrCreate(..., function (err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
 
-app.get('/auth/twitter', function(req, res){
-	oa.getOAuthRequestToken(function(error, oauth_token, oauth_token_secret, results){
-		if (error) {
-			console.log(error);
-			res.send("yeah no. didn't work.")
-		}
-		else {
-			req.session.oauth = {};
-			req.session.oauth.token = oauth_token;
-			console.log('oauth.token: ' + req.session.oauth.token);
-			req.session.oauth.token_secret = oauth_token_secret;
-			console.log('oauth.token_secret: ' + req.session.oauth.token_secret);
-			res.redirect('https://twitter.com/oauth/authenticate?oauth_token='+oauth_token)
-	}
-	});
-});
+// Redirect the user to Twitter for authentication.  When complete, Twitter
+// will redirect the user back to the application at
+// /auth/twitter/callback
+app.get('/auth/twitter', passport.authenticate('twitter'));
 
-app.get('/auth/twitter/callback', function(req, res, next){
-	if (req.session.oauth) {
-		req.session.oauth.verifier = req.query.oauth_verifier;
-		var oauth = req.session.oauth;
+// Twitter will redirect the user to this URL after approval.  Finish the
+// authentication process by attempting to obtain an access token.  If
+// access was granted, the user will be logged in.  Otherwise,
+// authentication has failed.
+app.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { successRedirect: '/',
+                                     failureRedirect: '/' }));
 
-		oa.getOAuthAccessToken(oauth.token,oauth.token_secret,oauth.verifier, 
-		function(error, oauth_access_token, oauth_access_token_secret, results){
-			if (error){
-				console.log(error);
-				res.send(error);
-				res.send("yeah something broke.");
-			} else {
-				req.session.oauth.access_token = oauth_access_token;
-				req.session.oauth,access_token_secret = oauth_access_token_secret;
-				console.log(results);
-				res.send("worked. nice one.");
-			}
-		}
-		);
-	} else
-		next(new Error("you're not supposed to be here."))
-});
+
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
