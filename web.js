@@ -69,7 +69,16 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
     //create user here
-    done(null, profile);
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      process.nextTick(function () {
+
+            // To keep the example simple, the user's Twitter profile is returned to
+            // represent the logged-in user.  In a typical application, you would want
+            // to associate the Twitter account with a user record in your database,
+            // and return that user instead.
+            return done(null, profile);
+      });
+    });
   }
 ));
 
