@@ -106,6 +106,7 @@ app.get('/auth/twitter/callback', function(req, res, next){
         user.id = results.user_id;
         user.save(function(err, users){
           console.log(users);
+          res.render('index');
         });
 			}
 		}
