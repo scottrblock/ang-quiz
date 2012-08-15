@@ -83,7 +83,7 @@ app.listen(process.env.PORT || 3000, function(){
 });
 
 //Twitter Oauth
-app.get('/leaderboard/', function(req, res){
+app.get('/leaderboard', function(req, res){
   res.render('leaderboard')
 });
 
