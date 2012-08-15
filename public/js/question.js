@@ -57,6 +57,16 @@ function QuestionCtrl($scope){
       
       if(done){
         $('#result-modal').modal('show');
+        
+        /*
+          var scott = new User(); 
+          scott.id = '1';
+          scott.score = 2;
+          scott.save(function(err, users){
+            console.log(users);
+          })
+        */
+        
       }
     
     };

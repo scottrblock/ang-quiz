@@ -4,6 +4,7 @@
   , "dependencies": {
       "express": "2.5.x"
     , "jade": ">= 0.0.1"
+    , "mongoskin": ">= 0.4.0"
   },
   "engines": {
     "node": "0.8.x",
