@@ -69,7 +69,7 @@ passport.use(new TwitterStrategy({
   },
   function(token, tokenSecret, profile, done) {
     //create user here
-    console.log(profile);
+    done(null, user);
   }
 ));
 
@@ -84,7 +84,10 @@ app.get('/auth/twitter', passport.authenticate('twitter'));
 // authentication has failed.
 app.get('/auth/twitter/callback', 
   passport.authenticate('twitter', { successRedirect: '/',
-                                     failureRedirect: '/' }));
+                                     failureRedirect: '/' }),
+  
+                                     
+);
 
 
 
