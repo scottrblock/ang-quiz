@@ -58,16 +58,28 @@ function QuestionCtrl($scope){
       if(done){
         $('#result-modal').modal('show');
         twttr.anywhere(function (T) {
-           T("#login").connectButton({
-             authComplete: function(user) {
+          if(T.isConnected()){
+             var user = T.currentUser;
+             
+             var id = user.data('id');
+             var score = getPercent(getCorrectAnswers(), questions.length);
+             var name = user.data('screenName');
+             var img_url = user.data('profileImageUrl');
+             
+             var user = new User(); 
+             user.id = id;
+             user.score = score;
+             user.name = name;
+             user.img_url = img_url;
+             
+             user.save(function(err, users){
                console.log(user);
-             },
-             signOut: function() {
-               // triggered when user logs out
-             }
-           });
-         });
-        
+             });
+          } else {
+            T("#twitter-connect-placeholder").connectButton();
+          }
+           
+        });        
       }
     
     };

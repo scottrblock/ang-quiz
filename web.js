@@ -53,8 +53,10 @@ var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
   
 var UserSchema = new Schema({
-    id        : String
+    id        : Number
   , score     : Number
+  , name:  : String
+  , img_url: String
 });
 
 mongoose.model('User', UserSchema); 
