@@ -64,10 +64,8 @@ passport.use(new TwitterStrategy({
     callbackURL: "http://dctechdcrap.herokuapp.com/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, done) {
-    User.findOrCreate(..., function (err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
+    //create user here
+    console.log(profile);
   }
 ));
 
