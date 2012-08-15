@@ -21,6 +21,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.static(__dirname + '/public'));
+  app.use(express.session());
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
