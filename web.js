@@ -60,10 +60,10 @@ var User = mongoose.model('User');
 var oa = new OAuth(
 	"https://api.twitter.com/oauth/request_token",
 	"https://api.twitter.com/oauth/access_token",
-	"YourConsumerKeyProvidedByTwitter",
+	"dfrfRrhx2uIYXvwPGH3sPg",
 	"zKLEOknTpb5e0ZzlWXcdU19nJj2RkcvCLqO9wQVr70",
 	"1.0",
-	"http://yourdomain/auth/twitter/callback",
+	"http://dctechdcrap.herokuapp.com/auth/twitter/callback",
 	"HMAC-SHA1"
 );
 
