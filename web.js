@@ -88,12 +88,6 @@ app.get('/leaderboard/', function(req, res){
 });
 
 
-// redirect all others to the index (HTML5 history)
-app.get('*', routes.index);
-
-
-
-
 
 
 
