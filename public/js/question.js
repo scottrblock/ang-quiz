@@ -77,8 +77,6 @@ function QuestionCtrl($scope, $http){
                 console.log('status: ' + status);
                 console.log(data);
              });
-             
-             
           } else {
             T("#twitter-connect-placeholder").connectButton();
           }
