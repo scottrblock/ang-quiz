@@ -76,7 +76,7 @@ function QuestionCtrl($scope){
              $http.post('/user/new', new_user).success(function(data, status){
                 console.log('status: ' + status);
                 console.log(data);
-             }
+             });
              
              
           } else {
