@@ -22,8 +22,6 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
   app.use(express.cookieParser()); 
   app.use(express.session({secret: 'dctech'}));
-
-
   app.use(app.router);
 });
 
@@ -39,6 +37,27 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
+//get score post
+app.post('/user/new', function(req, res) {
+    console.log(JSON.stringify(req.body));
+    console.log('req.body.name', req.body['name']);
+    console.log('og res ' + res);
+    res = JSON.stringify(req.body);
+    
+    return res;
+    
+    /*
+         var saveUser = new User(); 
+             saveUser.id = id;
+             saveUser.score = score;
+             saveUser.name = name;
+             saveUser.img_url = img_url;
+             
+             saveUser.save(function(err, users){
+               console.log(saveUser);
+             });
+    */
+});
 
 // Start server
 app.listen(process.env.PORT || 3000, function(){

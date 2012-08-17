@@ -66,15 +66,19 @@ function QuestionCtrl($scope){
              var name = user.data('screenName');
              var img_url = user.data('profileImageUrl');
              
-             var saveUser = new User(); 
-             saveUser.id = id;
-             saveUser.score = score;
-             saveUser.name = name;
-             saveUser.img_url = img_url;
+             var new_user = {
+                id  :   id,
+                score:  score,
+                name:   name,
+                img_url:    img_url
+             }
              
-             saveUser.save(function(err, users){
-               console.log(saveUser);
-             });
+             $http.post('/user/new', new_user).success(function(data, status){
+                console.log('status: ' + status);
+                console.log(data);
+             }
+             
+             
           } else {
             T("#twitter-connect-placeholder").connectButton();
           }
