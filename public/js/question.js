@@ -1,4 +1,4 @@
-function QuestionCtrl($scope){
+function QuestionCtrl($scope, $http){
     $scope.types = [
       {val: 'rap', display: 'DC Rap'},
       {val: 'tech', display: 'DC Tech'}
