@@ -73,6 +73,8 @@ function QuestionCtrl($scope, $http){
                 img_url:    img_url
              }
              
+             console.log(new_user);
+             
              $http.post('/user/new', new_user).success(function(data, status){
                 console.log('status: ' + status);
                 console.log(data);

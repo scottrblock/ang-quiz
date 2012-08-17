@@ -39,9 +39,9 @@ app.get('/partials/:name', routes.partials);
 
 //get score post
 app.post('/user/new', function(req, res) {
-    console.log(JSON.stringify(req));
+    console.log(req);
     console.log('og res ' + res);
-    res = JSON.stringify(req);
+    res = req;
     
     return res;
     
