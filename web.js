@@ -40,19 +40,18 @@ app.get('/partials/:name', routes.partials);
 //get score post
 app.post('/user/new', function(req, res) {
     console.log(req.body);
+    var user_obj = req.body
+    var saveUser = new User(); 
+        saveUser.id = user_obj.id;
+        saveUser.score = user_obj.score;
+        saveUser.name = user_obj.name;
+        saveUser.img_url = user_obj.img_url;
+         
+        saveUser.save(function(err, users){
+            console.log(saveUser);
+        });
+    
     res.send('Data received: ' + JSON.stringify(req.body));
-        
-    /*
-         var saveUser = new User(); 
-             saveUser.id = id;
-             saveUser.score = score;
-             saveUser.name = name;
-             saveUser.img_url = img_url;
-             
-             saveUser.save(function(err, users){
-               console.log(saveUser);
-             });
-    */
 });
 
 // Start server
