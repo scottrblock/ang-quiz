@@ -40,11 +40,8 @@ app.get('/partials/:name', routes.partials);
 //get score post
 app.post('/user/new', function(req, res) {
     console.log(req);
-    console.log('og res ' + res);
-    res.send('Data received: ' + req);
-    
-    return res;
-    
+    res.send('Data received: ' + JSON.stringify.(req));
+        
     /*
          var saveUser = new User(); 
              saveUser.id = id;

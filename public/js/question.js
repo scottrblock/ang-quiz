@@ -63,8 +63,8 @@ function QuestionCtrl($scope, $http){
              
              console.log(user);
              var id = user.data('id');
-             var name = user.data('screenName');
-             var img_url = user.data('profileImageUrl');
+             var name = user.screenName;
+             var img_url = user.profileImageUrl;
              var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
              
              var new_user = {
