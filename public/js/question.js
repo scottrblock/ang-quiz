@@ -61,10 +61,11 @@ function QuestionCtrl($scope, $http){
           if(T.isConnected()){
              var user = T.currentUser;
              
+             console.log(user);
              var id = user.data('id');
-             var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
              var name = user.data('screenName');
              var img_url = user.data('profileImageUrl');
+             var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
              
              var new_user = {
                 id  :   id,

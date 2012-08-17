@@ -41,7 +41,7 @@ app.get('/partials/:name', routes.partials);
 app.post('/user/new', function(req, res) {
     console.log(req);
     console.log('og res ' + res);
-    res = req;
+    res.send('Data received: ' + req);
     
     return res;
     
