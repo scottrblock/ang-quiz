@@ -61,27 +61,12 @@ function QuestionCtrl($scope, $http){
           if(T.isConnected()){
              var user = T.currentUser;
              
-             console.log(user);
-             var id = user.data('id');
-             var name = user.screenName;
-             var img_url = user.profileImageUrl;
-             var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
-             
-             var new_user = {
-                id  :   id,
-                score:  score,
-                name:   name,
-                img_url:    img_url
-             }
-             
-             console.log(new_user);
-             
-             $http.post('/user/new', new_user).success(function(data, status){
-                console.log('status: ' + status);
-                console.log(data);
-             });
+             $scope.saveUser(user);
           } else {
-            T("#twitter-connect-placeholder").connectButton();
+            T("#twitter-connect-placeholder").connectButton( 
+                authComplete: function(user) {
+                   $scope.saveUser(user)
+                });
           }
            
         });        
@@ -91,6 +76,26 @@ function QuestionCtrl($scope, $http){
     
     $scope.getPercent = function(a, b){
       return (a/b).toFixed(2) * 100;
+    }
+    
+    $scope.saveUser = function (user){
+         var id = user.data('id');
+         var name = user.screenName;
+         var img_url = user.profileImageUrl;
+         var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
+         
+         var new_user = {
+            id  :   id,
+            score:  score,
+            name:   name,
+            img_url:    img_url
+         }
+         
+         
+         $http.post('/user/new', new_user).success(function(data, status){
+            console.log('status: ' + status);
+            console.log(data);
+         });
     }
 }
 
