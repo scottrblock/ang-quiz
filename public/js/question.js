@@ -63,10 +63,12 @@ function QuestionCtrl($scope, $http){
              
              $scope.saveUser(user);
           } else {
-            T("#twitter-connect-placeholder").connectButton( 
+            T("#twitter-connect-placeholder").connectButton( {
                 authComplete: function(user) {
                    $scope.saveUser(user)
-                });
+                }
+            });
+
           }
            
         });        
