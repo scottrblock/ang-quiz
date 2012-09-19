@@ -80,14 +80,14 @@ var User = mongoose.model('User');
 
 //get list of users
 app.get('/user/list.json', function(req, res) {
-    var users = [];
+  var users = [];
 
-    console.log("Tryna get users");
+  console.log("Tryna get users");
 
-    User.find().sort('date', -1).execFind(function (arr,data) {
-      console.log("hello");
-      res.send(data);
-    });
+  User.find(function (err, users) {
+    console.log(users);
+    res.send(users);
+  });
     res.send(users);
 });
 
