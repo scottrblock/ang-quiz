@@ -61,11 +61,11 @@ function QuestionCtrl($scope, $http){
           if(T.isConnected()){
              var user = T.currentUser;
              
-             $scope.saveUser(user);
+             $scope.processUser(user);
           } else {
             T("#twitter-connect-placeholder").connectButton( {
                 authComplete: function(user) {
-                   $scope.saveUser(user)
+                   $scope.processUser(user)
                 }
             });
 
@@ -78,6 +78,11 @@ function QuestionCtrl($scope, $http){
     
     $scope.getPercent = function(a, b){
       return (a/b).toFixed(2) * 100;
+    }
+
+    $scope.processUser = function(user){
+      $scope.isNewUser(user);
+      //$scope.saveUser(user);
     }
     
     $scope.saveUser = function (user){
