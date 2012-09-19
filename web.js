@@ -84,10 +84,10 @@ app.get('/user/list.json', function(req, res) {
 
     console.log("Tryna get users");
 
-    User.find().all(function(user) {
-      console.log("hellloooo");
-      users.push(user);
-    }); 
+    User.find().sort('date', -1).execFind(function (arr,data) {
+      console.log("hello");
+      res.send(data);
+    });
     res.send(users);
 });
 
