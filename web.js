@@ -79,7 +79,7 @@ mongoose.model('User', UserSchema);
 var User = mongoose.model('User');
 
 //get list of users
-app.post('/user/list.json', function(req, res) {
+app.get('/user/list.json', function(req, res) {
     var users = [];
     User.find().all(function(user) {
       users.push(user);
