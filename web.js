@@ -54,6 +54,8 @@ app.post('/user/new', function(req, res) {
     res.send('Data received: ' + JSON.stringify(req.body));
 });
 
+
+
 // Start server
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
@@ -75,6 +77,15 @@ var UserSchema = new Schema({
 
 mongoose.model('User', UserSchema); 
 var User = mongoose.model('User');
+
+//get list of users
+app.post('/user/list.json', function(req, res) {
+    var users = [];
+    User.find().all(function(user) {
+      users.push(user);
+    }); 
+    res.send(users);
+});
 
 
 
