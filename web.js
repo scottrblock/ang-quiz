@@ -80,7 +80,7 @@ var User = mongoose.model('User');
 
 //get list of users
 app.get('/user/list.json', function(req, res) {
-  var users = [];
+  //var users = [];
 
   console.log("Tryna get users");
 
@@ -88,7 +88,6 @@ app.get('/user/list.json', function(req, res) {
     console.log(users);
     res.send(users);
   });
-    res.send(users);
 });
 
 
