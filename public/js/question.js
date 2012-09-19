@@ -99,6 +99,14 @@ function QuestionCtrl($scope, $http){
             console.log(data);
          });
     }
+
+    $scope.isNewUser = function(user){
+      var id = user.data('id');
+
+      $http.get('/user/list.json').success(function(data, status){
+        console.log(data);
+      });
+    }
 }
 
 
