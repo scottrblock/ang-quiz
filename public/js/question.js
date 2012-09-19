@@ -110,6 +110,12 @@ function QuestionCtrl($scope, $http){
 
       $http.get('/user/list.json').success(function(data, status){
         console.log(data);
+       
+        _.each(data, function(user){
+           console.log(user);
+           console.log(user.id);
+        });
+      
       });
     }
 }
