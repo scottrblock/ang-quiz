@@ -1,6 +1,7 @@
 function UserCtrl($scope, $http){
 
   $scope.users = function(){
+    console.log("hi");
     var users = [];
     $http.get('/user/list.json').success(function(data, status){
       console.log("data " + data);
@@ -14,7 +15,8 @@ function UserCtrl($scope, $http){
       
       users = sorted_users;
     });
-    
+    console.log(users);
+    console.log("hello");
     return users;
   }
    
