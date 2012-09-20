@@ -56,22 +56,20 @@ function QuestionCtrl($scope, $http){
       });
       
       if(done){
-        $('#result-modal').modal('show');
         twttr.anywhere(function (T) {
           if(T.isConnected()){
-             var user = T.currentUser;
-             
-             $scope.processUser(user);
+            var user = T.currentUser;
+            $scope.processUser(user);
           } else {
             T("#twitter-connect-placeholder").connectButton( {
-                authComplete: function(user) {
-                   $scope.processUser(user)
-                }
+              authComplete: function(user) {
+                $scope.processUser(user)
+              }
             });
 
           }
-           
-        });        
+        });   
+        $('#result-modal').modal('show');
       }
     
     };
@@ -81,8 +79,11 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.processUser = function(user){
-      $scope.isNewUser(user);
-      //$scope.saveUser(user);
+      if($scope.isNewUser(user) == true){
+        $scope.saveUser(user);
+      } else{
+        //print already posted score message
+      }
     }
     
     $scope.saveUser = function (user){
@@ -110,8 +111,7 @@ function QuestionCtrl($scope, $http){
       var new_user = true;
 
       $http.get('/user/list.json').success(function(data, status){
-         
-
+      
         _.each(data, function(user){
           console.log("id " + id);
           console.log("new user: " + new_user);
@@ -119,8 +119,10 @@ function QuestionCtrl($scope, $http){
             new_user = false;
           }
         });
-      
+
       });
+
+      return new_user;
     }
 }
 
