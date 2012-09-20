@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app>
+<head>  
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/local.css">
+  
+</head>
+<body>
+  <div ng-controller="UserCtrl" class="container">
+    
+    <div class="eight columns offset-by-four">
+      <h1>DC Tech or DC Rap Leaderboard!</h1>
+    </div>
+    
+    <div class="eight columns offset-by-four">
+      
+      <table class="table-striped users" id="users">
+        <tr ng-repeat="user in users" data-question-id="{{$index}}">
+          <td>
+            <img src="{{user.img_url}}" />
+          </td>
+          <td>
+            {{user.name}}
+          </td>
+          <td>
+            {{user.score}}
+          </td>
+        </tr>
+      </table>
+    
+    </div>
+    
+    
+  
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  
+  <script src="/js/user.js"></script>
+</body>
+</html>
