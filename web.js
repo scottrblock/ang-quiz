@@ -35,7 +35,10 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/leaderboard', res.render('leaderboard'));
+app.get('/leaderboard', function(req, res) {
+  res.render('leaderboard');
+});
+
 app.get('/partials/:name', routes.partials);
 
 //get score post
