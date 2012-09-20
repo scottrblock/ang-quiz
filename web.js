@@ -35,6 +35,7 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
+app.get('/leaderboard', res.render('leaderboard'));
 app.get('/partials/:name', routes.partials);
 
 //get score post
@@ -80,7 +81,7 @@ var User = mongoose.model('User');
 
 //get list of users
 app.get('/user/list.json', function(req, res) {
-  User.find().sort('field -score').all(function (err, users) {
+  User.find(function (err, users) {
     res.send(users);
   });
 });
