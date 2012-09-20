@@ -80,7 +80,7 @@ var User = mongoose.model('User');
 
 //get list of users
 app.get('/user/list.json', function(req, res) {
-  User.find.sort('field -score').all(function (err, users) {
+  User.find().sort('field -score').all(function (err, users) {
     res.send(users);
   });
 });
