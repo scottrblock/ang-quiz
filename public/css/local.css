@@ -5,6 +5,9 @@
     #D93E38 red
     #D1F2A5 green
     
+    #F7E72F gold
+    #cccccc silver
+    #DD8E2A bronze
 
 
 */
@@ -107,9 +110,20 @@ table.users .user-name div{
   padding: 15px 15px 0 0;
 } 
 
+table.users span.trophy{
+  padding-left: 10px;
+}
 
+.icon-trophy.1-place{
+  color: #F7E72F
+}
 
+.icon-trophy.2-place{
+  color: #cccccc
+}
 
-
+.icon-trophy.3-place{
+  color: #DD8E2A
+}
 
 
