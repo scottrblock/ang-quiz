@@ -79,6 +79,8 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.processUser = function(user){
+      console.log("IS NEW USER?");
+      console.log($scope.isNewUser(user));
       if($scope.isNewUser(user) == true){
         $scope.saveUser(user);
       } else{
@@ -121,6 +123,7 @@ function QuestionCtrl($scope, $http){
         });
 
       });
+
 
       return new_user;
     }
