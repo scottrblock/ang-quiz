@@ -15,17 +15,26 @@
     <div class="eight columns offset-by-four">
       
       <table class="table-striped users" id="users">
-        <tr ng-repeat="user in users" data-question-id="{{$index}}">
-          <td>
-            <img src="{{user.img_url}}" />
-          </td>
-          <td>
-            {{user.name}}
-          </td>
-          <td>
-            {{user.score}}
-          </td>
-        </tr>
+        <thead>
+          <th>Ranking</th>
+          <th>User</th>
+          <th>Score</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users" class="ranking-{{$index + 1}}">
+            <td>
+              {{$index + 1}}
+            </td>
+            <td>
+              <img src="{{user.img_url}}" />
+              <div>{{user.name}}</div>
+            </td>
+            <td>
+              {{user.score}}
+            </td>
+          </tr>
+        </tbody>
       </table>
     
     </div>
