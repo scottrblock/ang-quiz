@@ -109,17 +109,23 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.isNewUser = function(user){
+      var done_get = false;
+      var done_each = false;
+
       var id = user.data('id');
       var new_user = true;
 
       $http.get('/user/list.json').success(function(data, status){
-      
-        _.each(data, function(user){
+        done_get = true;
+
+        _.each(data, i, function(user){
           console.log("id " + id);
           console.log("new user: " + new_user);
           if(user.id == id){
             new_user = false;
           }
+          console.log(i);
+          console.log(data.length);
         });
 
       });
