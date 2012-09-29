@@ -27,7 +27,7 @@
           <tr ng-repeat="user in users" class="ranking-{{$index + 1}}">
             <td>
               <span ng-show="$index < 3" class="trophy">
-                <i class="icon-trophy {{$index +1}}-place"></i>
+                <i class="icon-trophy place-{{$index +1}}"></i>
               </span>
               {{$index + 1}}
             </td>
