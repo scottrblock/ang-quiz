@@ -126,13 +126,15 @@ function QuestionCtrl($scope, $http){
           if(i == data.length - 1){
             done_each = true;
           }
+
+          if(done_each && done_get){
+            return new_user;
+          }
         });
 
       });
 
-      if(done_each && done_get){
-        return new_user;
-      }
+
     }
 }
 
