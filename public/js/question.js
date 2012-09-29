@@ -118,7 +118,7 @@ function QuestionCtrl($scope, $http){
       $http.get('/user/list.json').success(function(data, status){
         done_get = true;
 
-        _.each(data, i, function(user){
+        _.each(data,i function(user, i){
            console.log(i);
           console.log(data.length);
           console.log("id " + id);
