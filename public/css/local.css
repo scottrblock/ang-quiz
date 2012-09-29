@@ -98,6 +98,7 @@ table.users{
 
 table.users tr th {
   padding: 0 20px 10px 0;
+  text-align: left;
 }
 
 table.users .user-name img{
