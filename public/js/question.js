@@ -133,7 +133,7 @@ function QuestionCtrl($scope, $http){
         });
 
       });
-
+ 
       return get_users;
 
     }
