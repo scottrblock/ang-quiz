@@ -26,10 +26,10 @@
         <tbody>
           <tr ng-repeat="user in users" class="ranking-{{$index + 1}}">
             <td>
-              {{$index + 1}}
-              <div ng-show="$index < 3">
+              <span ng-show="$index < 3" class="trophy">
                 <i class="icon-trophy {{$index +1}}-place"></i>
-              </div>
+              </span>
+              {{$index + 1}}
             </td>
             <td class="user-name">
               <img ng-src="{{user.img_url}}" />
