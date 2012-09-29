@@ -100,11 +100,11 @@ table.users tr th {
 table.users .user-name img{
   float: left;
   padding: 0 15px 0 0;
-  padding: 15px 15px 0 0;
 } 
 
 table.users .user-name div{
   float: left;
+  padding: 15px 15px 0 0;
 } 
 
 
