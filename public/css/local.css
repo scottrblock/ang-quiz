@@ -88,3 +88,26 @@ a:active{
 #result-modal{
   display: none;
 }
+
+table.users{
+  margin-top: 20px;
+}
+
+table.users tr th {
+  padding: 0 20px 10px 0;
+}
+
+table.users .user-name img{
+  float: left;
+} 
+
+table.users .user-name div{
+  float: left;
+} 
+
+
+
+
+
+
+
