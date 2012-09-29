@@ -119,20 +119,20 @@ function QuestionCtrl($scope, $http){
         done_get = true;
 
         _.each(data, function(user, i){
-          console.log(i);
-          console.log(data.length);
-          console.log("id " + id);
-          console.log("new user: " + new_user);
           if(user.id == id){
             new_user = false;
           }
 
+          if(i == data.length - 1){
+            done_each = true;
+          }
         });
 
       });
 
-
-      return new_user;
+      if(done_each && done_get){
+        return new_user;
+      }
     }
 }
 
