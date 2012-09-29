@@ -115,7 +115,7 @@ function QuestionCtrl($scope, $http){
       var id = user.data('id');
       var new_user = true;
 
-      $http.get('/user/list.json').success(function(data, status){
+      var get_users = $http.get('/user/list.json').success(function(data, status){
         done_get = true;
 
         _.each(data, function(user, i){
@@ -134,8 +134,11 @@ function QuestionCtrl($scope, $http){
 
       });
 
+      return get_users;
 
     }
+
+
 }
 
 
