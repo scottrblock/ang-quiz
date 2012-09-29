@@ -119,7 +119,7 @@ function QuestionCtrl($scope, $http){
         done_get = true;
 
         _.each(data, function(user, i){
-           console.log(i);
+          console.log(i);
           console.log(data.length);
           console.log("id " + id);
           console.log("new user: " + new_user);
