@@ -81,11 +81,7 @@ function QuestionCtrl($scope, $http){
     $scope.processUser = function(user){
       console.log("IS NEW USER?");
       console.log($scope.isNewUser(user));
-      if($scope.isNewUser(user) == true){
-        $scope.saveUser(user);
-      } else{
-        //print already posted score message
-      }
+      $scope.isNewUser(user)
     }
     
     $scope.saveUser = function (user){
@@ -128,7 +124,11 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.eachUserCallback = function(new_user){
-      return new_user;
+      if(new_user == true){
+        $scope.saveUser(user);
+      } else{
+        //print already posted score message
+      }
     }
 
 
