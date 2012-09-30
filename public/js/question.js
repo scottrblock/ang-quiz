@@ -117,7 +117,6 @@ function QuestionCtrl($scope, $http){
       });
  
     }
-
     $scope.getUsersCallback = function(data, id){
       _.each(data, function(user, i){
         if(user.id == id){
