@@ -114,6 +114,8 @@ function QuestionCtrl($scope, $http){
  
     }
     $scope.getUsersCallback = function(data, id){
+      console.log("hello from getUsersCallback");
+
       _.each(data, function(user, i){
         if(user.id == id){
           $scope.eachUserCallback(false);
@@ -124,6 +126,8 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.eachUserCallback = function(new_user){
+      console.log("hello from eachUserCallback");
+      console.log(new_user);
       if(new_user == true){
         $scope.saveUser(user);
       } else{
