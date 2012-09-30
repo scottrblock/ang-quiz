@@ -113,12 +113,12 @@ function QuestionCtrl($scope, $http){
       var new_user = true;
 
       $http.get('/user/list.json').success(function(data, status){        
-        $scope.getUsersCallback(data);
+        $scope.getUsersCallback(data, id);
       });
  
     }
 
-    $scope.getUsersCallback = function(data){
+    $scope.getUsersCallback = function(data, id){
       _.each(data, function(user, i){
         if(user.id == id){
           $scope.eachUserCallback(false);
