@@ -113,6 +113,7 @@ function QuestionCtrl($scope, $http){
       });
  
     }
+    
     $scope.getUsersCallback = function(data, id, og_user){
       console.log("hello from getUsersCallback");
 
