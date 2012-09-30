@@ -105,22 +105,22 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.isNewUser = function(user){
+      var og_user = user;
       var id = user.data('id');
-      var new_user = true;
 
       $http.get('/user/list.json').success(function(data, status){        
-        $scope.getUsersCallback(data, id);
+        $scope.getUsersCallback(data, id, og_user);
       });
  
     }
-    $scope.getUsersCallback = function(data, id){
+    $scope.getUsersCallback = function(data, id, og_user){
       console.log("hello from getUsersCallback");
 
       _.each(data, function(user, i){
         if(user.id == id){
-          $scope.eachUserCallback(false, user);
+          $scope.eachUserCallback(false, og_user);
         } else if(i == data.length - 1){
-          $scope.eachUserCallback(true, user);
+          $scope.eachUserCallback(true, og_user);
         }
       });
     }
