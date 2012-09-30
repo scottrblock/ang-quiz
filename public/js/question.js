@@ -109,33 +109,27 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.isNewUser = function(user){
-      var done_get = false;
-      var done_each = false;
-
       var id = user.data('id');
       var new_user = true;
 
-      var get_users = $http.get('/user/list.json').success(function(data, status){
-        done_get = true;
-
-        _.each(data, function(user, i){
-          if(user.id == id){
-            new_user = false;
-          }
-
-          if(i == data.length - 1){
-            done_each = true;
-          }
-
-          if(done_each && done_get){
-            return new_user;
-          }
-        });
-
+      $http.get('/user/list.json').success(function(data, status){        
+        $scope.getUsersCallback(data);
       });
  
-      return get_users;
+    }
 
+    $scope.getUsersCallback = function(data){
+      _.each(data, function(user, i){
+        if(user.id == id){
+          $scope.eachUserCallback(false);
+        } else if(i == data.length - 1){
+          $scope.eachUserCallback(true);
+        }
+      });
+    }
+
+    $scope.eachUserCallback = function(new_user){
+      return new_user;
     }
 
 
