@@ -118,14 +118,14 @@ function QuestionCtrl($scope, $http){
 
       _.each(data, function(user, i){
         if(user.id == id){
-          $scope.eachUserCallback(false);
+          $scope.eachUserCallback(false, user);
         } else if(i == data.length - 1){
-          $scope.eachUserCallback(true);
+          $scope.eachUserCallback(true, user);
         }
       });
     }
 
-    $scope.eachUserCallback = function(new_user){
+    $scope.eachUserCallback = function(new_user, user){
       console.log("hello from eachUserCallback");
       console.log(new_user);
       if(new_user == true){
