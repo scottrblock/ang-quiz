@@ -15,6 +15,7 @@
 body{
   font: 400 16px/1.6 'Pontano Sans', Verdana, Helvetica, sans-serif;
   background: url(../img/az_subtle.png) #eee;
+  padding: 20px;
 }
 
 h1 {
