@@ -13,7 +13,16 @@
 */
 
 body{
-  font-size: 18px;
+  font: 400 16px/1.6 'Pontano Sans', Verdana, Helvetica, sans-serif;
+  background: url(../img/az_subtle.png) #eee;
+}
+
+h1 {
+  font: 400 60px/1.3 'Bevan', Georgia, serif;
+}
+
+h2, h3{
+  font-family: : 'Bevan', Georgia, serif;
 }
 
 #extras{
