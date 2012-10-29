@@ -27,8 +27,15 @@ h2, h3{
 }
 
 .social{
-  margin: 10px auto 20px 0;
+  margin: 10px auto 20px auto;
   text-align: center;
+  width: 240px;
+}
+
+.social span{
+  margin: 0 auto;
+  text-align: center;
+  float: left;
 }
 
 #extras{
