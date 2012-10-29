@@ -1,82 +1,87 @@
-<!doctype html>
-<html ng-app>
-<head>  
-  <link rel="shortcut icon" href="/img/favicon.ico" />
-
-  <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/local.css">
+<div ng-controller="QuestionCtrl">
   
-</head>
-<body>
-  <div ng-controller="QuestionCtrl" class="container">
-    
-    <div class="eight columns offset-by-four">
-      <h1>DC Tech or DC Rap?</h1>
-      <p>
-        Decide who said the quotes to the left and see if you can distinguish!
-      </p>
+  <div class="eight columns offset-by-four">
+    <h1>DC Tech or DC Rap?</h1>
+    <div class="social"> 
+      <span class='st_facebook_vcount' displayText='Facebook'></span>
+      <span class='st_twitter_vcount' displayText='Tweet' st_via=''''></span>
+      <span class='st_fblike_vcount' displayText='Facebook Like'></span>
     </div>
-    
-    <div class="eight columns offset-by-four">
-      
-      <ul class="unstyled questions" id="questions">
-        <li ng-repeat="question in questions" class="correct-{{question.correct}}-tried-{{question.tried}}" data-question-id="{{$index}}">
-          <div>Who said 
-            <blockquote>{{question.text}}</blockquote>
-          </div>
-          
-          <ul class='unstyled choices'>
-            <li ng-repeat="a in types">
-              <a href="#" ng-click="checkAnswer()" class="btn btn-large">{{a.display}}</a>
-            </li>
-          </ul>
-          <div class='extra-show-{{question.extra.length > 0}}' ng-bind-html-unsafe="question.extra">
-          </div>
-        </li>
-      </ul>
-    
-    </div>
-    
-    <ul id="extras">
-      <li>
-        DC Native Wale raps this line in the first verse of Ambition, the title track on his second commercial album
-        <iframe width="340" height="191" src="http://www.youtube.com/embed/O7ZbM7ak8uw?rel=0" frameborder="0" allowfullscreen></iframe>      
-      </li>
-      <li>
-        #DCTech pioneer Peter Corbett gives us this quote during an interview with Frank Gruber and Tech Cocktail.
-        <iframe width="340" height="191" src="http://www.youtube.com/embed/jdjdGEcT1jw?rel=0" frameborder="0" allowfullscreen></iframe>  
-      </li>
-    </ul>
-    
-    
-    <div id="result-modal" class="modal fade"> 
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">x</button>
-          <h3>Results:</h3>
-      </div>
-      <div class="modal-body">
-          <h3>You ended up getting {{getCorrectAnswers()}} out of {{questions.length}} correct. That's {{getPercent(getCorrectAnswers(), questions.length)}}%!</h3>
-          
-          <h4>Connect with Twitter to join the <a href="/leaderboard">leaderboard</a>!</h4>
-          <span id="twitter-connect-placeholder"></span>
-          
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-      </div>
-    </div>
-  
+    <p>
+      Rap and startups don't <a href="http://techcrunch.com/2012/10/03/andreessen-horowitz-iinvests-15-million-in-rap-genius/"><em>always</em></a> go together. But the DC rap and tech communities have a lot in common. Hard work, ambition, and a relentless attitude to name a few! Decide who said the quotes below and see if you can distinguish the communities apart:
+    </p>
   </div>
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
-  <script src="http://underscorejs.org/underscore-min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <script src="http://platform.twitter.com/anywhere.js?id=dfrfRrhx2uIYXvwPGH3sPg&v=1" type="text/javascript"></script>
+  <div class="eight columns offset-by-four">
+    
+    <ul class="unstyled questions" id="questions">
+      <li ng-repeat="question in questions" class="correct-{{question.correct}}-tried-{{question.tried}}" data-question-id="{{$index}}">
+        <div>Who said 
+          <blockquote>{{question.text}}</blockquote>
+        </div>
+        
+        <ul class='unstyled choices'>
+          <li ng-repeat="a in types">
+            <a href="#extra-{{$index}}" ng-click="checkAnswer()" class="btn btn-large">
+              {{a.display}}
+            </a>
+          </li>
+        </ul>
+        <div class='extra-show-{{question.extra.length > 0}}' ng-bind-html-unsafe="question.extra">
+        </div>
+      </li>
+
+    </ul>
+    <p class="brought">
+      Brought to you by the crazy kids at <a href="http://ventureboard.co/">VentureBoard</a>.
+    </p>
+  </div>
   
-  <script src="/js/question.js"></script>
-</body>
-</html>
+  <ul id="extras">
+    <li>
+      DC Native <a href="https://twitter.com/Wale">Wale</a> raps this line in the first verse of Ambition, the title track on his <a href="http://en.wikipedia.org/wiki/Ambition_(Wale_album)">second commercial album</a>:
+      <iframe width="340" height="191" src="http://www.youtube.com/embed/O7ZbM7ak8uw?rel=0" frameborder="0" allowfullscreen></iframe>      
+    </li>
+    <li>
+      #DCTech pioneer <a href="https://twitter.com/corbett3000">Peter Corbett</a> gives us this quote during an interview with Frank Gruber and <a href="http://tech.co/">Tech Cocktail</a>.
+      <iframe width="340" height="191" src="http://www.youtube.com/embed/jdjdGEcT1jw?rel=0" frameborder="0" allowfullscreen></iframe>  
+    </li>
+    <li>
+      Born just outside of the District, in Gaithersburg Maryland, <a href="https://twitter.com/Logic301">Logic</a> gives us this line off of Beggin', on his second mixtape, <a href="http://www.datpiff.com/Logic-Young-Sinatra-mixtape.271763.html">Young Sinatra</a>:
+      <iframe width="340" height="191" src="http://www.youtube.com/embed/kEDg52Rqo2U"
+      frameborder="0" allowfullscreen></iframe>
+    </li>
+    <li>
+      Like many in the DCTech crowd, <a href="https://twitter.com/PhilAde_RF">Phil Ad&eacute;</a> didn't always call the District home. Having grown up bouncing between California, Alabame, and Florida, Phil brings a unique perspective to the DC rap game. The above quote comes from Headlines, his take on Drake's summer hit Deadlines:
+      <iframe width="340" height="191" src="http://www.youtube.com/embed/kaFUQhwSi0w"
+      frameborder="0" allowfullscreen></iframe>
+    </li>
+    <li>
+      DCTech regular and <a href="https://www.socialtables.com/">Social Tables</a> founder, <a href="https://twitter.com/danberger">Dan Berger</a> gives us this gem in an <a href="http://inthecapital.com/channels/defining-the-culture-at-social-tables/">interview with In the Capital</a> describing the culture at Social Tables.
+    </li>
+    <li>
+      DCTech's favorite investor, <a href="https://twitter.com/glehel">Glen Hellman, or Mr. Cranky, tells us this wish in one of his <a href="http://drivenforward.com/blog/mr-cranky-i-dont-give-a-crap-about-your-demo">blog posts</a>.
+    </li>
+  </ul>
+
+  
+  <div id="result-modal" class="modal fade"> 
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Results:</h3>
+    </div>
+    <div class="modal-body">
+        <h3>You ended up getting {{getCorrectAnswers()}} out of {{questions.length}} correct. That's {{getPercent(getCorrectAnswers(), questions.length)}}%!</h3>
+        
+        <h4>Connect with Twitter below to join the leaderboard:</h4>
+        <span id="twitter-connect-placeholder"></span>
+        <p>
+          Or the current <a href="/leaderboard">board</a>
+        </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+  </div>
+
+</div>

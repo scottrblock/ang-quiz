@@ -1,60 +1,37 @@
-<!doctype html>
-<html ng-app>
-<head>  
-  <link rel="shortcut icon" href="/img/favicon.ico" />
+<div ng-controller="UserCtrl">
 
-  <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="/css/font-awesome.css">
-  <link rel="stylesheet" href="/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/local.css">
-</head>
-<body>
-  <div ng-controller="UserCtrl" class="container">
+  <div class="eight columns offset-by-four">
+    <h1>DC Tech or DC Rap Leaderboard!</h1>
+  </div>
+  
+  <div class="eight columns offset-by-four">
     
-    <div class="eight columns offset-by-four">
-      <h1>DC Tech or DC Rap Leaderboard!</h1>
-    </div>
-    
-    <div class="eight columns offset-by-four">
-      
-      <table class="table-striped users" id="users">
-        <thead>
-          <th>Ranking</th>
-          <th>User</th>
-          <th>Score</th>
-          <th></th>
-        </thead>
-        <tbody>
-          <tr ng-repeat="user in users" class="ranking-{{$index + 1}}">
-            <td>
-              <span ng-show="$index < 3" class="trophy">
-                <i class="icon-trophy place-{{$index +1}}"></i>
-              </span>
-              {{$index + 1}}
-            </td>
-            <td class="user-name">
-              <img ng-src="{{user.img_url}}" />
-              <div>{{user.name}}</div>
-            </td>
-            <td>
-              {{user.score}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    
-    </div>
+    <table class="table-striped users" id="users">
+      <thead>
+        <th>Ranking</th>
+        <th>User</th>
+        <th>Score</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users" class="ranking-{{$index + 1}}">
+          <td>
+            <span ng-show="$index < 3" class="trophy">
+              <i class="icon-trophy place-{{$index +1}}"></i>
+            </span>
+            {{$index + 1}}
+          </td>
+          <td class="user-name">
+            <img ng-src="{{user.img_url}}" />
+            <div>{{user.name}}</div>
+          </td>
+          <td>
+            {{user.score}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   
   </div>
 
-    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
-  <script src="http://underscorejs.org/underscore-min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  
-  <script src="/js/user.js"></script>
-</body>
-</html>
+</div>

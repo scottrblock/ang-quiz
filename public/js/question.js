@@ -1,12 +1,17 @@
 function QuestionCtrl($scope, $http){
     $scope.types = [
-      {val: 'rap', display: 'DC Rap'},
-      {val: 'tech', display: 'DC Tech'}
+      {val: 'rap', display: 'DC Rap', icon: 'icon-music'},
+      {val: 'tech', display: 'DC Tech', icon: 'icon-hdd'}
     ]
   
     $scope.questions = [
       {text: 'Ambition is priceless. It\'s something that\'s in your veins.', correct_type: 'rap'},
-      {text: 'I feel every day that I can conquer the world, and I have no qualms about that.', correct_type: 'tech'}
+      {text: 'I feel every day that I can conquer the world, and I have no qualms about that.', correct_type: 'tech'},
+      {text: 'I didn\'t choose this life it was destiny… And I know I\'m going to make it even without a degree.', correct_type: 'rap'
+      },
+      {text: 'I know nothing is handed, but man I\'m planning to take it', correct_type: 'rap'},
+      {text: 'Ship all day, party all night', correct_type: 'tech'},
+      {text: 'I don’t want to be down in your weeds. I have weeds of my own.', correct_type: 'tech'}
     ];
     
     //make each question initially incorrect and not tried

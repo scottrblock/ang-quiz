@@ -2,7 +2,7 @@
   colors:
     #eee
     #ccc
-    #D93E38 red
+    #FF5D57 red
     #D1F2A5 green
     
     #F7E72F gold
@@ -15,7 +15,7 @@
 body{
   font: 400 16px/1.6 'Pontano Sans', Verdana, Helvetica, sans-serif;
   background: url(../img/az_subtle.png) #eee;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 h1 {
@@ -24,6 +24,11 @@ h1 {
 
 h2, h3{
   font-family: : 'Bevan', Georgia, serif;
+}
+
+.social{
+  margin: 10px auto 20px 0;
+  text-align: center;
 }
 
 #extras{
@@ -46,6 +51,10 @@ iframe{
 a:active{
   position: relative;
   top: 1px;
+}
+
+li{
+  line-height: 24px;
 }
 
 .questions li{
@@ -87,11 +96,17 @@ a:active{
 }
 
 .questions .correct-false-tried-true{
-  background: #D93E38;
+  background: #FF5D57;
 }
 
 .questions .correct-true-tried-true{
   background: #D1F2A5;
+}
+
+.brought{
+  margin-top: 40px;
+  border-top: 1px dashed #999;
+  padding-top: 10px;
 }
 
 .extra-show-false{
