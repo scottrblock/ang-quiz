@@ -42,6 +42,10 @@ h1 a{
   float: left;
 }
 
+.leader-social.social{
+  width: auto;
+}
+
 #extras{
   display: none;
 }
