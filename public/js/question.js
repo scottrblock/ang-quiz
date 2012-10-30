@@ -85,7 +85,7 @@ function QuestionCtrl($scope, $http){
 
     $scope.processUser = function(user){
       console.log("IS NEW USER?");
-      console.log($scope.isNewUser(user));
+      //console.log($scope.isNewUser(user));
       $scope.isNewUser(user)
     }
     

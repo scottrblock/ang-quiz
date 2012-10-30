@@ -124,6 +124,10 @@ li{
   display: none;
 }
 
+.table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(even) th {
+  background-color: #fff;
+}
+
 table.users{
   margin-top: 20px;
 }
