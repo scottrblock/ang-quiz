@@ -139,7 +139,8 @@ function QuestionCtrl($scope, $http){
       if(new_user == true){
         $scope.saveUser(user);
       } else{
-        //print already posted score message
+        $("#result-modal .modal-body p").hide();
+        $("#result-modal .modal-body h4").html("It looks like you're already <a href='/leaderboard'>on the leaderboard</a>!")
       }
     }
 
