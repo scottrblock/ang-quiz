@@ -84,8 +84,6 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.processUser = function(user){
-      console.log("IS NEW USER?");
-      //console.log($scope.isNewUser(user));
       $scope.isNewUser(user)
     }
     
@@ -103,9 +101,6 @@ function QuestionCtrl($scope, $http){
       }
          
       $http.post('/user/new', new_user).success(function(data, status){
-        console.log('status: ' + status);
-        console.log(data);
-
         $("#result-modal .modal-body p").hide();
         $("#result-modal .modal-body h4").html("<div class='alert alert-success'>Success, you are now <a href='/leaderboard'>on the leaderboard</a>!</div>");
         });
@@ -136,8 +131,6 @@ function QuestionCtrl($scope, $http){
     }
 
     $scope.eachUserCallback = function(new_user, user){
-      console.log("hello from eachUserCallback");
-      console.log(new_user);
       if(new_user == true){
         $scope.saveUser(user);
       } else{
@@ -145,7 +138,6 @@ function QuestionCtrl($scope, $http){
         $("#result-modal .modal-body h4").html("<div class='alert alert-info'>It looks like you're already <a href='/leaderboard'>on the leaderboard</a>!</div>");
       }
     }
-
 
 }
 
