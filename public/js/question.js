@@ -90,23 +90,25 @@ function QuestionCtrl($scope, $http){
     }
     
     $scope.saveUser = function (user){
-         var id = user.data('id');
-         var name = user.screenName;
-         var img_url = user.profileImageUrl;
-         var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
+      var id = user.data('id');
+      var name = user.screenName;
+      var img_url = user.profileImageUrl;
+      var score = $scope.getPercent($scope.getCorrectAnswers(), $scope.questions.length);
          
-         var new_user = {
-            id  :   id,
-            score:  score,
-            name:   name,
-            img_url:    img_url
-         }
+      var new_user = {
+        id  :     id,
+        score:    score,
+        name:     name,
+        img_url:  img_url
+      }
          
-         
-         $http.post('/user/new', new_user).success(function(data, status){
-            console.log('status: ' + status);
-            console.log(data);
-         });
+      $http.post('/user/new', new_user).success(function(data, status){
+        console.log('status: ' + status);
+        console.log(data);
+
+        $("#result-modal .modal-body p").hide();
+        $("#result-modal .modal-body h4").html("<div class='alert alert-success'>Success, you are now <a href='/leaderboard'>on the leaderboard</a>!</div>");
+        });
     }
 
     $scope.isNewUser = function(user){
@@ -140,7 +142,7 @@ function QuestionCtrl($scope, $http){
         $scope.saveUser(user);
       } else{
         $("#result-modal .modal-body p").hide();
-        $("#result-modal .modal-body h4").html("It looks like you're already <a href='/leaderboard'>on the leaderboard</a>!")
+        $("#result-modal .modal-body h4").html("<div class='alert alert-info'>It looks like you're already <a href='/leaderboard'>on the leaderboard</a>!</div>");
       }
     }
 
