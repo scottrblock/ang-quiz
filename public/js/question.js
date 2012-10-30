@@ -120,15 +120,17 @@ function QuestionCtrl($scope, $http){
     }
     
     $scope.getUsersCallback = function(data, id, og_user){
-      console.log("hello from getUsersCallback");
-
-      _.each(data, function(user, i){
-        if(user.id == id){
-          $scope.eachUserCallback(false, og_user);
-        } else if(i == data.length - 1){
-          $scope.eachUserCallback(true, og_user);
-        }
-      });
+      if(data.length > 0){
+        _.each(data, function(user, i){
+          if(user.id == id){
+            $scope.eachUserCallback(false, og_user);
+          } else if(i == data.length - 1){
+            $scope.eachUserCallback(true, og_user);
+          }
+        });
+      } else{
+        $scope.eachUserCallback(true, og_user);
+      }
     }
 
     $scope.eachUserCallback = function(new_user, user){
