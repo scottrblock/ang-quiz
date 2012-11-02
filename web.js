@@ -33,8 +33,13 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-app.use(require('node-force-domain').redirect('www.techorrap.com'));
-
+app.get('*', function(req, res, next) {
+  if (req.headers.host.slice(0, 3) != 'www') {
+    res.redirect('http://www.' + req.headers.host + req.url, 301);
+  } else {
+    next();
+  }
+});
 
 // Routes
 app.get('/', routes.index);
