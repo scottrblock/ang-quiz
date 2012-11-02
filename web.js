@@ -33,6 +33,15 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+//redirect to www
+app.get('/*', function(req, res, next) {
+  if (req.headers.host.match(/^www/) !== null ) {
+    res.redirect('http://' + req.headers.host.replace(/^www\./, '') + req.url);
+  } else {
+    next();     
+  }
+});
+
 // Routes
 app.get('/', routes.index);
 app.get('/leaderboard', function(req, res) {
