@@ -33,6 +33,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+app.use(require('node-force-domain').redirect('www.techorrap.com'));
 
 
 // Routes

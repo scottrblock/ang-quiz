@@ -5,6 +5,7 @@
       "express": "2.5.x"
     , "jade": ">= 0.0.1"
     , "mongoose": ">= 3.0.0"
+    , "node-force-domain" : "0.0.5"
   },
   "engines": {
     "node": "0.8.x",
